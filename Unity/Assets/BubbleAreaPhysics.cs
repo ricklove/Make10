@@ -29,12 +29,16 @@ public class BubbleAreaPhysics : MonoBehaviour
         {
             var diff = transform.position - bubble.transform.position;
 
-            var tRad = rad - bubble.GetRadius() + breakDistance;
+            var tRad = rad + bubble.GetRadius() + breakDistance;
             var tRadSq = tRad * tRad;
 
             if (diff.sqrMagnitude < tRadSq)
             {
                 stillAttached.Add(bubble);
+            }
+            else
+            {
+                bubble.IsAttachedToBubbleArea = false;
             }
         }
 
@@ -48,17 +52,22 @@ public class BubbleAreaPhysics : MonoBehaviour
                 break;
             }
 
+            if (bubble.IsAttachedToBubbleArea)
+            {
+                continue;
+            }
+
             if (!attachedBubbles.Contains(bubble))
             {
                 var diff = transform.position - bubble.transform.position;
 
-                var tRad = rad - bubble.GetRadius();
+                var tRad = rad + bubble.GetRadius();
                 var tRadSq = tRad * tRad;
 
                 if (diff.sqrMagnitude < tRadSq)
                 {
-
                     attachedBubbles.Add(bubble);
+                    bubble.IsAttachedToBubbleArea = true;
                 }
             }
         }

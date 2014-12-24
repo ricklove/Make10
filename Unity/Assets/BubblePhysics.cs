@@ -21,6 +21,8 @@ public class BubblePhysics : MonoBehaviour
     public float attachedBubbleMaxForce = 2f;
     public float attachedBubbleStartSpringDistance = 0f;
 
+    public bool IsAttachedToBubbleArea { get; set; }
+
 
     private Vector3 mousePosDelta;
     private Vector3 mousePosLast;
