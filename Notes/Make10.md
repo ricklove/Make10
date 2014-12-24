@@ -132,15 +132,21 @@ Build math confidence while having fun.
 - Add Game Logic
 - Create random bubbles in two areas
 
+### Hour 6
+
+#### 16:54-17:24
+
+- Verify all bubbles are in area and one is 10
+- Show win state
+- Next Puzzle
 
 
 ## TODO
 
-- Verify all bubbles are in area and one is 10
-- Show win message
-- Next puzzle
-
-- Keep Bubble Area rotation upright
-
 - Test on device
 - Publish to App Store
+
+- Show Title
+- Show win message
+- Keep Bubble Area rotation upright
+

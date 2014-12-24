@@ -37,7 +37,7 @@ public class BubblePhysics : MonoBehaviour
         get
         {
             // Trim disposed bubbles
-            allBubbles = allBubbles.Where(b => b.gameObject).ToList();
+            allBubbles = allBubbles.Where(b => b && b.gameObject).ToList();
 
             // Return active bubbles
             return allBubbles.Where(b => b.gameObject.activeSelf).ToList();

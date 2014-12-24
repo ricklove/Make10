@@ -8,8 +8,14 @@ public class BubbleAreaPhysics : MonoBehaviour
     public float breakDistance = 0f;
 
     private int maxAttachedBubbleCount = 100;//10;
+    private bool isPhysicsDisabled = false;
 
-    private List<BubblePhysics> attachedBubbles = new List<BubblePhysics>();
+    internal List<BubblePhysics> attachedBubbles = new List<BubblePhysics>();
+
+    internal void DisablePhysics()
+    {
+        isPhysicsDisabled = true;
+    }
 
     // Use this for initialization
     void Start()
@@ -20,6 +26,11 @@ public class BubbleAreaPhysics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (isPhysicsDisabled)
+        {
+            return;
+        }
+
         var rad = GetRadius();
 
         // Detach bubbles out of area
@@ -105,4 +116,6 @@ public class BubbleAreaPhysics : MonoBehaviour
         // Just use the x scale as a shortcut
         return radius * transform.localScale.x;
     }
+
+
 }
