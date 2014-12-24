@@ -46,8 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AlignText.cs" />
-     <Compile Include="Assets\NumberBubble.cs" />
+     <Compile Include="Assets\BubblePhysics.cs" />
+     <Compile Include="Assets\BubbleText.cs" />
      <None Include="Assets\Bubble Particles\readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>

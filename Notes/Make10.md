@@ -100,17 +100,25 @@ Build math confidence while having fun.
 
 ### Hour 3
 
-#### 2014-12-24 3:54-
+#### 2014-12-24 3:54-5:08
 
-- 
+- Modify physics to cling to mouse when connected
+- Create Spring between bubbles
+- Tweak Physics
+
+### Hour 4
+
+#### 5:36-6:13
+
+- Tweak physics for many bubbles
+
+#### 6:14-
+
+- Add number areas
 
 
 ## TODO
 
-- Make bubbles stick to cursor:
-	- Attach if close enough
-	- Drag like a spring (stronger if farther away)
-- Make bubbles stick to each other
-	- Attach if touching
-	- Drag each other with a spring force
-	- Break if too far away
+- Test many bubbles
+- Create bubble areas with numbers
+- 

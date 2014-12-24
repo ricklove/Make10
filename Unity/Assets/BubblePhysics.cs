@@ -4,30 +4,31 @@ using System.Collections.Generic;
 using System.Linq;
 
 [ExecuteInEditMode]
-public class NumberBubble : MonoBehaviour
+public class BubblePhysics : MonoBehaviour
 {
 
-    public string text;
-
     public float attachedInputAttachDistance = 0f;
-    public float attachedInputBreakDistance = 3.0f;
-    public float attachedInputForce = 10f;
+    public float attachedInputBreakDistance = 1000.0f;
+    public float attachedInputBaseForce = 15f;
+    public float attachedInputMaxForce = 75f;
     public float attachedInputStartSpringDistance = 1.0f;
 
+    public float attachedBubbleForceAdjustmentWhenHasInput = 0.01f;
 
-    public float attachedBubbleAttachDistance = 0.05f;
-    public float attachedBubbleBreakDistance = 0.2f;
-    public float attachedBubbleForce = 2f;
-    public float attachedBubbleStartSpringDistance = 0.5f;
+    public float attachedBubbleAttachDistance = 0.7f;
+    public float attachedBubbleBreakDistance = 0.7f;
+    public float attachedBubbleBaseForce = 1f;
+    public float attachedBubbleMaxForce = 2f;
+    public float attachedBubbleStartSpringDistance = 0f;
 
 
     private Vector3 mousePosDelta;
     private Vector3 mousePosLast;
 
     private string attachedInputID;
-    private List<NumberBubble> attachedBubbles = new List<NumberBubble>();
+    private List<BubblePhysics> attachedBubbles = new List<BubblePhysics>();
 
-    private static List<NumberBubble> allBubbles = new List<NumberBubble>();
+    private static List<BubblePhysics> allBubbles = new List<BubblePhysics>();
 
     // Use this for initialization
     void Start()
@@ -35,14 +36,16 @@ public class NumberBubble : MonoBehaviour
         allBubbles.Add(this);
     }
 
+    void FixedUpdate()
+    {
+
+    }
+
     // Update is called once per frame
     void Update()
     {
-        UpdateTextMesh();
-
-        // TODO: Determine whether to move this to FixedUpdate
-        UpdateInputPhysics();
         UpdateBubbleAttachmentPhysics();
+        UpdateInputPhysics();
     }
 
     private void UpdateBubbleAttachmentPhysics()
@@ -54,7 +57,7 @@ public class NumberBubble : MonoBehaviour
         var otherBubbles = allBubbles.Where(b => b.gameObject.activeSelf && b != this).ToList();
 
         // Detach from far bubbles
-        var stillAttached = new List<NumberBubble>();
+        var stillAttached = new List<BubblePhysics>();
 
         foreach (var oBubble in attachedBubbles)
         {
@@ -93,10 +96,14 @@ public class NumberBubble : MonoBehaviour
         foreach (var oBubble in attachedBubbles)
         {
             var diff = oBubble.transform.position - transform.position;
-            var startSpringDistance = attachedBubbleStartSpringDistance;
-            var baseForceMagnitude = attachedBubbleForce;
 
-            PullToEdge(radius + oBubble.GetRadius(), rigid, diff, startSpringDistance, baseForceMagnitude);
+            var forceAdjustment = attachedInputID != null ? 
+                attachedBubbleForceAdjustmentWhenHasInput : 1.0f;
+
+            PullToEdge(radius + oBubble.GetRadius(), rigid, diff, 
+                attachedBubbleStartSpringDistance,
+                attachedBubbleBaseForce * forceAdjustment,
+                attachedBubbleMaxForce * forceAdjustment);
         }
 
     }
@@ -137,6 +144,13 @@ public class NumberBubble : MonoBehaviour
                 position = new Vector2(mousePosLast.x, mousePosLast.y),
                 delta = new Vector2(mousePosDelta.x, mousePosDelta.y),
             });
+        }
+        else
+        {
+            if (attachedInputID == "mouse")
+            {
+                attachedInputID = null;
+            }
         }
 
 
@@ -190,13 +204,14 @@ public class NumberBubble : MonoBehaviour
 
             var diff = attachedInput.position - pos;
             var startSpringDistance = attachedInputStartSpringDistance;
-            var baseForceMagnitude = attachedInputForce;
+            var baseForceMagnitude = attachedInputBaseForce;
+            var maxForceMagnitude = attachedInputMaxForce;
 
-            PullToEdge(radius, rigid, diff, startSpringDistance, baseForceMagnitude);
+            PullToEdge(radius, rigid, diff, startSpringDistance, baseForceMagnitude, maxForceMagnitude);
         }
     }
 
-    private static void PullToEdge(float radius, Rigidbody2D rigid, Vector3 diff, float startSpringDistance, float baseForceMagnitude)
+    private static void PullToEdge(float radius, Rigidbody2D rigid, Vector3 diff, float startSpringDistance, float baseForceMagnitude, float maxForceMagnitude)
     {
         var distanceFromEdge = diff.magnitude - radius;
 
@@ -207,6 +222,8 @@ public class NumberBubble : MonoBehaviour
             // Make the force like a spring
             var forceMagnitude = springDistance * springDistance;
             forceMagnitude *= baseForceMagnitude;
+
+            forceMagnitude = Mathf.Min(forceMagnitude, maxForceMagnitude);
 
             var force = diff.normalized * forceMagnitude;
 
@@ -222,15 +239,6 @@ public class NumberBubble : MonoBehaviour
         return radius;
     }
 
-    private void UpdateTextMesh()
-    {
-        var textMesh = transform.FindChild("Text").GetComponent<TextMesh>();
-
-        if (textMesh.text != text)
-        {
-            textMesh.text = text;
-        }
-    }
 }
 
 public class BubbleInput

@@ -2,8 +2,9 @@
 using System.Collections;
 
 [ExecuteInEditMode]
-public class AlignText : MonoBehaviour
+public class BubbleText : MonoBehaviour
 {
+    private string text = "";
 
     // Use this for initialization
     void Start()
@@ -15,6 +16,11 @@ public class AlignText : MonoBehaviour
     void Update()
     {
         var textMesh = transform.FindChild("Text").GetComponent<TextMesh>();
+
+        if (textMesh.text != text)
+        {
+            textMesh.text = text;
+        }
 
         if (textMesh.text.Length > 0 && textMesh.text[0] >= '0' && textMesh.text[0] <= '9')
         {
@@ -33,5 +39,6 @@ public class AlignText : MonoBehaviour
                     textMesh.transform.localPosition.z);
             }
         }
+
     }
 }
