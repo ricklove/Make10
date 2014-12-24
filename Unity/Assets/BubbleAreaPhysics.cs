@@ -7,7 +7,7 @@ public class BubbleAreaPhysics : MonoBehaviour
     public float gravityMagnitude = 9.8f;
     public float breakDistance = 0f;
 
-    private int maxAttachedBubbleCount = 10;
+    private int maxAttachedBubbleCount = 100;//10;
 
     private List<BubblePhysics> attachedBubbles = new List<BubblePhysics>();
 

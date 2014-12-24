@@ -120,10 +120,27 @@ Build math confidence while having fun.
 
 - Attach bubble to only one area
 
+#### 7:25-7:27
+
+- Updated todo
+
+### Hour 5
+
+#### 7:41-7:48
+#### 7:50-8:19
+
+- Add Game Logic
+- Create random bubbles in two areas
+
+
 
 ## TODO
 
-- Add game script
-- Create random bubbles in two areas
-- Win puzzle
+- Verify all bubbles are in area and one is 10
+- Show win message
 - Next puzzle
+
+- Keep Bubble Area rotation upright
+
+- Test on device
+- Publish to App Store
