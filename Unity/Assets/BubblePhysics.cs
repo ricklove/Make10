@@ -132,9 +132,16 @@ public class BubblePhysics : MonoBehaviour
         {
             if (touch.phase != TouchPhase.Ended && touch.phase != TouchPhase.Canceled)
             {
-                // TODO: Handle touch
-                //touch.
-                throw new System.NotImplementedException();
+                Vector3 worldPos = Camera.main.ScreenToWorldPoint(touch.position);
+
+                //mousePosDelta = worldPos - mousePosLast;
+
+                inputs.Add(new BubbleInput()
+                {
+                    id = "touch" + touch.fingerId,
+                    position = new Vector2(worldPos.x, worldPos.y),
+                    //delta = new Vector2(worldPosDelta.x, worldPosDelta.y),
+                });
             }
         }
 
@@ -155,7 +162,7 @@ public class BubblePhysics : MonoBehaviour
             {
                 id = "mouse",
                 position = new Vector2(mousePosLast.x, mousePosLast.y),
-                delta = new Vector2(mousePosDelta.x, mousePosDelta.y),
+                //delta = new Vector2(mousePosDelta.x, mousePosDelta.y),
             });
         }
         else
@@ -258,5 +265,5 @@ public class BubbleInput
 {
     public string id;
     public Vector2 position;
-    public Vector2 delta;
+    //public Vector2 delta;
 }

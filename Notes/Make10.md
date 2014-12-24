@@ -140,10 +140,32 @@ Build math confidence while having fun.
 - Show win state
 - Next Puzzle
 
+#### 17:25-17:34
+
+- Publish to Device
+
+#### 17:35-17:36
+
+- Test on device
+- Testing:
+	- Implement Touch Input
+	- Set Icon for App
+	- Change Name for App
+	- Set Orientation
+
+#### 17:37-17:46
+
+- Set Icon for App
+- Change Name for App
+- Set Orientation
+
+- Implement Touch Input
+
+- Test: OK
+
 
 ## TODO
 
-- Test on device
 - Publish to App Store
 
 - Show Title
