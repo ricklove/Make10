@@ -112,13 +112,18 @@ Build math confidence while having fun.
 
 - Tweak physics for many bubbles
 
-#### 6:14-
+#### 6:14-7:15
 
 - Add number areas
+
+#### 7:16-7:24
+
+- Attach bubble to only one area
 
 
 ## TODO
 
-- Test many bubbles
-- Create bubble areas with numbers
-- 
+- Add game script
+- Create random bubbles in two areas
+- Win puzzle
+- Next puzzle
