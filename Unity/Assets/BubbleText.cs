@@ -4,7 +4,7 @@ using System.Collections;
 [ExecuteInEditMode]
 public class BubbleText : MonoBehaviour
 {
-    private string text = "";
+    public string text = "";
 
     // Use this for initialization
     void Start()

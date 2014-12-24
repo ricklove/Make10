@@ -30,6 +30,18 @@ public class BubblePhysics : MonoBehaviour
 
     private static List<BubblePhysics> allBubbles = new List<BubblePhysics>();
 
+    public static List<BubblePhysics> LiveBubbles
+    {
+        get
+        {
+            // Trim disposed bubbles
+            allBubbles = allBubbles.Where(b => b.gameObject).ToList();
+
+            // Return active bubbles
+            return allBubbles.Where(b => b.gameObject.activeSelf).ToList();
+        }
+    }
+
     // Use this for initialization
     void Start()
     {
@@ -53,8 +65,7 @@ public class BubblePhysics : MonoBehaviour
         var radius = GetRadius();
 
         // Get other bubbles
-        allBubbles = allBubbles.Where(b => b.gameObject).ToList();
-        var otherBubbles = allBubbles.Where(b => b.gameObject.activeSelf && b != this).ToList();
+        var otherBubbles = LiveBubbles.Where(b => b != this).ToList();
 
         // Detach from far bubbles
         var stillAttached = new List<BubblePhysics>();
@@ -97,10 +108,10 @@ public class BubblePhysics : MonoBehaviour
         {
             var diff = oBubble.transform.position - transform.position;
 
-            var forceAdjustment = attachedInputID != null ? 
+            var forceAdjustment = attachedInputID != null ?
                 attachedBubbleForceAdjustmentWhenHasInput : 1.0f;
 
-            PullToEdge(radius + oBubble.GetRadius(), rigid, diff, 
+            PullToEdge(radius + oBubble.GetRadius(), rigid, diff,
                 attachedBubbleStartSpringDistance,
                 attachedBubbleBaseForce * forceAdjustment,
                 attachedBubbleMaxForce * forceAdjustment);
@@ -232,7 +243,7 @@ public class BubblePhysics : MonoBehaviour
         }
     }
 
-    private float GetRadius()
+    public float GetRadius()
     {
         // TODO: Consider circle collider radius could be transformed
         var radius = gameObject.GetComponent<CircleCollider2D>().radius;
