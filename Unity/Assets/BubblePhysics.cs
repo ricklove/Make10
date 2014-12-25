@@ -171,12 +171,6 @@ public class BubblePhysics : MonoBehaviour
             });
         }
 
-        // Ensure attached is still an input
-        if (!inputs.Any(bi => bi.id == attachedInputID))
-        {
-            attachedInputID = null;
-        }
-
         // React if touch is near
         var pos = new Vector2(transform.position.x, transform.position.y);
         var radius = GetRadius();
@@ -202,10 +196,15 @@ public class BubblePhysics : MonoBehaviour
                 attachedInputID = null;
             }
         }
+        
 
         // if not attached to anything, search for a new attachment
         if (attachedInput == null)
         {
+            // Reset attachment id
+            attachedInputID = null;
+
+            // look for new input
             var aRadius = radius + attachedInputAttachDistance;
             var aRadiusSq = aRadius * aRadius;
 
