@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class BubbleAreaPhysics : MonoBehaviour
 {
+    public AudioClip enterSound;
+    public AudioClip exitSound;
+
     public float gravityMagnitude = 9.8f;
     public float breakDistance = 0f;
 
@@ -11,6 +14,10 @@ public class BubbleAreaPhysics : MonoBehaviour
     private bool areBubblesLocked = false;
 
     internal List<BubblePhysics> attachedBubbles = new List<BubblePhysics>();
+
+    private float timeAtStart;
+
+    private bool SoundIsReady { get { return Time.time - timeAtStart > 0.5f; } }
 
     internal void LockBubbles()
     {
@@ -20,7 +27,7 @@ public class BubbleAreaPhysics : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        timeAtStart = Time.time;
     }
 
     // Update is called once per frame
@@ -48,6 +55,10 @@ public class BubbleAreaPhysics : MonoBehaviour
                 else
                 {
                     bubble.IsAttachedToBubbleArea = false;
+                    if (exitSound != null && SoundIsReady)
+                    {
+                        audio.PlayOneShot(exitSound);
+                    }
                 }
             }
 
@@ -77,6 +88,11 @@ public class BubbleAreaPhysics : MonoBehaviour
                     {
                         attachedBubbles.Add(bubble);
                         bubble.IsAttachedToBubbleArea = true;
+
+                        if (enterSound != null && SoundIsReady)
+                        {
+                            audio.PlayOneShot(enterSound);
+                        }
                     }
                 }
             }

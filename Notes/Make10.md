@@ -175,21 +175,28 @@ Build math confidence while having fun.
 - Lock bubbles on correct
 - Test
 
-#### 2014-12-25 3:40-
+#### 2014-12-25 3:40-3:53
 
 - Fix adding multiple bubble to bubble attachments
 
-## TODO
+#### 3:54-3:57
 
-- Performance bug caused by bubble to bubble interaction
-- Touch still not disengaging
-- Move bubbles with cursor instead of using force
+- Fix Touch not disengaging
+
+### Hour 7
+
+#### 3:58-
+
+- Add music
+- Add Sound
+- Mute sound at create puzzle
+
+
+## TODO
  
 - Adjust border to screen
 
 - Add backgrounds
-- Add music
-- Add sounds
 
 - Publish to App Store
 

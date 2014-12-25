@@ -7,6 +7,8 @@ using System.Linq;
 public class BubblePhysics : MonoBehaviour
 {
 
+    
+
     public float attachedInputAttachDistance = 0f;
     public float attachedInputBreakDistance = 1000.0f;
     public float attachedInputBaseForce = 15f;
