@@ -46,10 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\BackgroundChanger.cs" />
      <Compile Include="Assets\BubbleAreaPhysics.cs" />
      <Compile Include="Assets\BubblePhysics.cs" />
      <Compile Include="Assets\BubbleText.cs" />
      <Compile Include="Assets\Game.cs" />
+     <None Include="Assets\Images\Backgrounds\License.txt" />
      <None Include="Assets\Bubble Particles\readme.txt" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>

@@ -15,10 +15,12 @@ public class Game : MonoBehaviour
     private GameState gameState;
     private GameState lastGameState;
 
+    private BackgroundChanger backgroundChanger;
 
     void Start()
     {
         gameState = GameState.Title;
+        backgroundChanger = transform.root.GetComponentInChildren<BackgroundChanger>();
     }
 
 
@@ -56,6 +58,9 @@ public class Game : MonoBehaviour
 
     private void UpdateCreate()
     {
+        // Change background
+        backgroundChanger.ChangeBackground();
+
         // Remove all game objects
         var root = gameObject;
 

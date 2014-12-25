@@ -185,11 +185,16 @@ Build math confidence while having fun.
 
 ### Hour 7
 
-#### 3:58-
+#### 3:58-4:14
 
 - Add music
 - Add Sound
 - Mute sound at create puzzle
+
+#### 4:15-5:14
+
+- Get Backgrounds
+- Add backgrounds
 
 
 ## TODO
