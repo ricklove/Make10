@@ -129,6 +129,7 @@ public class Game : MonoBehaviour
                 }
                 else if (Time.time - timeAtCorrect > 1f)
                 {
+                    bubbleAreas.ForEach(a => a.LockBubbles());
                     gameState = GameState.Win;
                 }
             }
@@ -145,14 +146,9 @@ public class Game : MonoBehaviour
         {
             timeAtWin = Time.time;
 
-            //bubbleAreas.ForEach(a => a.DisablePhysics());
-
             // Show win
             var winArea = bubbleAreas.First(a => a.attachedBubbles.Count == 10);
             var loseArea = bubbleAreas.First(a => a != winArea);
-
-            winArea.DisablePhysics();
-            //loseArea.LockText
 
             // Remove inner bubbles
             foreach (var b in winArea.attachedBubbles)

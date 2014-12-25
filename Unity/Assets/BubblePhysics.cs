@@ -165,14 +165,12 @@ public class BubblePhysics : MonoBehaviour
                 //delta = new Vector2(mousePosDelta.x, mousePosDelta.y),
             });
         }
-        else
-        {
-            if (attachedInputID == "mouse")
-            {
-                attachedInputID = null;
-            }
-        }
 
+        // Ensure attached is still an input
+        if (!inputs.Any(bi => bi.id == attachedInputID))
+        {
+            attachedInputID = null;
+        }
 
         // React if touch is near
         var pos = new Vector2(transform.position.x, transform.position.y);

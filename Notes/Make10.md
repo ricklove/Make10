@@ -163,11 +163,16 @@ Build math confidence while having fun.
 
 - Test: OK
 
-#### 18:20-
+#### 18:20-18:31
 
 - Don't increase gravity for few items
 - Change area size based on inside bubbles
-- 
+- Test for Win over time
+
+#### 20:18-20:
+
+- Disengage touch input
+- Lock bubbles on correct
 
 ## TODO
 

@@ -8,13 +8,13 @@ public class BubbleAreaPhysics : MonoBehaviour
     public float breakDistance = 0f;
 
     private int maxAttachedBubbleCount = 100;//10;
-    private bool isPhysicsDisabled = false;
+    private bool areBubblesLocked = false;
 
     internal List<BubblePhysics> attachedBubbles = new List<BubblePhysics>();
 
-    internal void DisablePhysics()
+    internal void LockBubbles()
     {
-        isPhysicsDisabled = true;
+        areBubblesLocked = true;
     }
 
     // Use this for initialization
@@ -26,59 +26,58 @@ public class BubbleAreaPhysics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isPhysicsDisabled)
-        {
-            return;
-        }
-
         var rad = GetRadius();
 
-        // Detach bubbles out of area
-        var stillAttached = new List<BubblePhysics>();
-
-        foreach (var bubble in attachedBubbles)
+        if (!areBubblesLocked)
         {
-            var diff = transform.position - bubble.transform.position;
 
-            var tRad = rad + bubble.GetRadius() + breakDistance;
-            var tRadSq = tRad * tRad;
+            // Detach bubbles out of area
+            var stillAttached = new List<BubblePhysics>();
 
-            if (diff.sqrMagnitude < tRadSq)
-            {
-                stillAttached.Add(bubble);
-            }
-            else
-            {
-                bubble.IsAttachedToBubbleArea = false;
-            }
-        }
-
-        attachedBubbles = stillAttached;
-
-        // Attach bubbles in area (if room)
-        foreach (var bubble in BubblePhysics.LiveBubbles)
-        {
-            if (attachedBubbles.Count >= maxAttachedBubbleCount)
-            {
-                break;
-            }
-
-            if (bubble.IsAttachedToBubbleArea)
-            {
-                continue;
-            }
-
-            if (!attachedBubbles.Contains(bubble))
+            foreach (var bubble in attachedBubbles)
             {
                 var diff = transform.position - bubble.transform.position;
 
-                var tRad = rad + bubble.GetRadius();
+                var tRad = rad + bubble.GetRadius() + breakDistance;
                 var tRadSq = tRad * tRad;
 
                 if (diff.sqrMagnitude < tRadSq)
                 {
-                    attachedBubbles.Add(bubble);
-                    bubble.IsAttachedToBubbleArea = true;
+                    stillAttached.Add(bubble);
+                }
+                else
+                {
+                    bubble.IsAttachedToBubbleArea = false;
+                }
+            }
+
+            attachedBubbles = stillAttached;
+
+            // Attach bubbles in area (if room)
+            foreach (var bubble in BubblePhysics.LiveBubbles)
+            {
+                if (attachedBubbles.Count >= maxAttachedBubbleCount)
+                {
+                    break;
+                }
+
+                if (bubble.IsAttachedToBubbleArea)
+                {
+                    continue;
+                }
+
+                if (!attachedBubbles.Contains(bubble))
+                {
+                    var diff = transform.position - bubble.transform.position;
+
+                    var tRad = rad + bubble.GetRadius();
+                    var tRadSq = tRad * tRad;
+
+                    if (diff.sqrMagnitude < tRadSq)
+                    {
+                        attachedBubbles.Add(bubble);
+                        bubble.IsAttachedToBubbleArea = true;
+                    }
                 }
             }
         }
