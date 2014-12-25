@@ -110,16 +110,31 @@ public class Game : MonoBehaviour
         }
     }
 
+    private float timeAtCorrect;
+
     private void UpdateActive()
     {
         // Check for win
+        var isCorrect = false;
+
         if (BubblePhysics.LiveBubbles.All(b => b.IsAttachedToBubbleArea))
         {
             if (bubbleAreas.Any(a => a.attachedBubbles.Count == 10))
             {
-                gameState = GameState.Win;
+                isCorrect = true;
+
+                if (timeAtCorrect == 0)
+                {
+                    timeAtCorrect = Time.time;
+                }
+                else if (Time.time - timeAtCorrect > 1f)
+                {
+                    gameState = GameState.Win;
+                }
             }
         }
+
+        if (!isCorrect) { timeAtCorrect = 0; }
     }
 
     private float timeAtWin;
@@ -130,11 +145,14 @@ public class Game : MonoBehaviour
         {
             timeAtWin = Time.time;
 
-            bubbleAreas.ForEach(a => a.DisablePhysics());
+            //bubbleAreas.ForEach(a => a.DisablePhysics());
 
             // Show win
             var winArea = bubbleAreas.First(a => a.attachedBubbles.Count == 10);
             var loseArea = bubbleAreas.First(a => a != winArea);
+
+            winArea.DisablePhysics();
+            //loseArea.LockText
 
             // Remove inner bubbles
             foreach (var b in winArea.attachedBubbles)

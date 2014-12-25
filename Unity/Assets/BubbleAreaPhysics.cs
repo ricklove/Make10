@@ -83,6 +83,10 @@ public class BubbleAreaPhysics : MonoBehaviour
             }
         }
 
+        // Change size based on number
+        var scale = 2 + (3 * attachedBubbles.Count * 0.1f);
+        transform.localScale = new Vector3(scale, scale, 1);
+
         // Affect bubbles with gravity
         foreach (var bubble in attachedBubbles)
         {
@@ -94,7 +98,7 @@ public class BubbleAreaPhysics : MonoBehaviour
             var forceMagnitude = gravityMagnitude * 1 / (1 + (ratioFromCenter * ratioFromCenter));
 
             // Scale force based on number of inner bubbles
-            forceMagnitude /= (1 + attachedBubbles.Count);
+            //forceMagnitude /= (1 + attachedBubbles.Count);
 
             var force = diff.normalized * forceMagnitude;
 

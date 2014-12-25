@@ -163,8 +163,19 @@ Build math confidence while having fun.
 
 - Test: OK
 
+#### 18:20-
+
+- Don't increase gravity for few items
+- Change area size based on inside bubbles
+- 
 
 ## TODO
+
+- Device Testing:
+	- Performace (Performance degrades until change numbers)
+	- Test for win fails (should maintain correctness for at least a specific time limit)
+	- Adjust Border to screen
+
 
 - Publish to App Store
 
