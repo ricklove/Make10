@@ -169,18 +169,27 @@ Build math confidence while having fun.
 - Change area size based on inside bubbles
 - Test for Win over time
 
-#### 20:18-20:
+#### 20:18-20:27
 
 - Disengage touch input
 - Lock bubbles on correct
+- Test
+
+#### 2014-12-25 3:40-
+
+- Fix adding multiple bubble to bubble attachments
 
 ## TODO
 
-- Device Testing:
-	- Performace (Performance degrades until change numbers)
-	- Test for win fails (should maintain correctness for at least a specific time limit)
-	- Adjust Border to screen
+- Performance bug caused by bubble to bubble interaction
+- Touch still not disengaging
+- Move bubbles with cursor instead of using force
+ 
+- Adjust border to screen
 
+- Add backgrounds
+- Add music
+- Add sounds
 
 - Publish to App Store
 

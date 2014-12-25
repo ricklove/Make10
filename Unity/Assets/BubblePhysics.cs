@@ -91,6 +91,11 @@ public class BubblePhysics : MonoBehaviour
         // Attach to near bubbles
         foreach (var oBubble in otherBubbles)
         {
+            if (attachedBubbles.Contains(oBubble))
+            {
+                continue;
+            }
+
             var diff = transform.position - oBubble.transform.position;
             var oRadius = oBubble.GetRadius();
 
