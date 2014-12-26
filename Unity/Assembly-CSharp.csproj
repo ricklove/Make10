@@ -54,10 +54,15 @@
      <Compile Include="Assets\Screenshots2Showcase\Code\OverlayController.cs" />
      <Compile Include="Assets\Screenshots2Showcase\Code\OverlayManagerController.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
+     <None Include="Assets\Plugins\Android\unityads\proguard-project.txt" />
      <None Include="Assets\Images\Backgrounds\License.txt" />
+     <None Include="Assets\Plugins\Android\unityads\build.xml" />
      <None Include="Assets\Bubble Particles\readme.txt" />
+     <None Include="Assets\link.xml" />
      <None Include="Assets\Screenshots2Showcase\Readme.txt" />
+     <None Include="Assets\Plugins\Android\unityads\res\values\strings.xml" />
      <None Include="Assets\Plugins\Kiip\Manifest.xml" />
+     <None Include="Assets\Plugins\Android\unityads\AndroidManifest.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
  </Reference>

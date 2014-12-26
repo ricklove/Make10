@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 
+using UnityEngine.Advertisements;
+
 public class Game : MonoBehaviour
 {
     public AudioClip winSound;
@@ -22,6 +24,8 @@ public class Game : MonoBehaviour
     {
         gameState = GameState.Title;
         backgroundChanger = transform.root.GetComponentInChildren<BackgroundChanger>();
+
+        Advertisement.Initialize("22043");
     }
 
 
@@ -159,12 +163,6 @@ public class Game : MonoBehaviour
             var winArea = bubbleAreas.First(a => a.attachedBubbles.Count == 10);
             var loseArea = bubbleAreas.First(a => a != winArea);
 
-            // Kiip Moment
-            if (winCount % 5 == 0)
-            {
-                Kiip.saveMoment("Completed " + winCount + "th Puzzle");
-            }
-
             // Add win sound
             if (winSound != null)
             {
@@ -190,7 +188,34 @@ public class Game : MonoBehaviour
 
         if (timePassed > 3)
         {
+            ShowAds();
             gameState = GameState.Create;
+        }
+    }
+
+    private void ShowAds()
+    {
+        // Unity Ads
+
+        // Show Unity Ads once
+        if (winCount == 3)// TESTING
+        {
+            if (Advertisement.isReady())
+            {
+                Debug.Log("Show Unity Ad");
+                Advertisement.Show();
+            }
+        }
+        // Show Kiip Rewards whenever Kiip determines
+        else if (winCount > 10)
+        {
+            // Kiip Moment
+            if (winCount % 5 == 0)
+            {
+#if UNITY_ANDROID
+                Kiip.saveMoment("Completed " + winCount + "th Puzzle");
+#endif
+            }
         }
     }
 }

@@ -64,4 +64,7 @@ $RECYCLE.BIN/
 *.lnk
 
 Integration/
-Unity/Builds/10Bubbles.apk
+Builds/
+Plugins/
+Standard Assets/
+Standard*Assets/

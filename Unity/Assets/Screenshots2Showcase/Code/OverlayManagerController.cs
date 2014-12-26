@@ -342,6 +342,9 @@ public static class ScreenshotSizeHelper
 389 495
 // 389 860
 
+// Unity Ads
+720 1280
+
 
 // Apple
 640 	960			2		iPhone4			
