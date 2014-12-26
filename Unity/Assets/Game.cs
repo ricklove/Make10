@@ -5,6 +5,7 @@ using System.Linq;
 
 public class Game : MonoBehaviour
 {
+    public AudioClip winSound;
 
     public GameObject bubblePrefab;
     public GameObject bubbleAreaPrefab;
@@ -87,16 +88,16 @@ public class Game : MonoBehaviour
 
 
         // Create random number of bubbles in each area
-        var valA = Random.RandomRange(1, 9);
-        var valB = Random.RandomRange(1, 9);
+        var valA = Random.Range(2, 10);
+        total = Random.Range(11, 20);
+        var valB = total - valA;
 
-        while (valA + valB < 11)
+        while (valA >= 10 || valB >= 10 || total <= 10)
         {
-            valA = Random.RandomRange(1, 9);
-            valB = Random.RandomRange(1, 9);
+            valA = Random.Range(2, 10);
+            total = Random.Range(11, 20);
+            valB = total - valA;
         }
-
-        total = valA + valB;
 
         CreateBubblesInArea(root, posA, valA);
         CreateBubblesInArea(root, posB, valB);
@@ -145,15 +146,38 @@ public class Game : MonoBehaviour
 
     private float timeAtWin;
 
+    private int winCount = 0;
+
     private void UpdateWin(bool hasChanged)
     {
         if (hasChanged)
         {
             timeAtWin = Time.time;
+            winCount++;
 
             // Show win
             var winArea = bubbleAreas.First(a => a.attachedBubbles.Count == 10);
             var loseArea = bubbleAreas.First(a => a != winArea);
+
+            // Kiip Moment
+            if (winCount == 1)
+            {
+                Kiip.saveMoment("Completed 1st Puzzle");
+            }
+            else if (winCount == 3)
+            {
+                Kiip.saveMoment("Completed 3rd Puzzle");
+            }
+            else if (winCount % 5 == 0)
+            {
+                Kiip.saveMoment("Completed " + winCount + "th Puzzle");
+            }
+
+            // Add win sound
+            if (winSound != null)
+            {
+                audio.PlayOneShot(winSound);
+            }
 
             // Remove inner bubbles
             foreach (var b in winArea.attachedBubbles)

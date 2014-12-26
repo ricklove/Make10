@@ -196,12 +196,36 @@ Build math confidence while having fun.
 - Get Backgrounds
 - Add backgrounds
 
+#### 5:15-5:18
+
+- Test on Device
+
+### Hour 8
+
+#### 4:25-4:42
+
+- Add Kiip Ads
+- Add Win sound
+
+### 4:43-4:58
+
+- Testing
+
+### 4:59-5:06
+
+- Fix number range
+
+### 5:07-5:12
+
+- Improve Icon
+
 
 ## TODO
- 
-- Adjust border to screen
 
-- Add backgrounds
+
+- Add mic sound detection to blow bubbles
+
+- Adjust border to screen
 
 - Publish to App Store
 
