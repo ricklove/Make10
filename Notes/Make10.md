@@ -202,7 +202,7 @@ Build math confidence while having fun.
 
 ### Hour 8
 
-#### 4:25-4:42
+#### 2014-12-26 4:25-4:42
 
 - Add Kiip Ads
 - Add Win sound
@@ -219,6 +219,10 @@ Build math confidence while having fun.
 
 - Improve Icon
 
+### 5:13-5:57
+
+- Publish to App Store
+
 
 ## TODO
 
@@ -227,7 +231,6 @@ Build math confidence while having fun.
 
 - Adjust border to screen
 
-- Publish to App Store
 
 - Show Title
 - Show win message
