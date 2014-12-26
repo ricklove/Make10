@@ -48,6 +48,9 @@ public class Game : MonoBehaviour
             case GameState.Win:
                 UpdateWin(hasChanged);
                 break;
+            case GameState.Ads:
+                UpdateAds(hasChanged);
+                break;
             default:
                 break;
         }
@@ -66,15 +69,7 @@ public class Game : MonoBehaviour
         // Change background
         backgroundChanger.ChangeBackground();
 
-        // Remove all game objects
         var root = gameObject;
-
-        var children = new List<GameObject>();
-        foreach (Transform child in transform) { children.Add(child.gameObject); }
-        children.ForEach(child =>
-        {
-            Destroy(child);
-        });
 
         // Create game two areas
         var posA = new Vector2(Random.RandomRange(-20, -10), Random.RandomRange(-10, 10));
@@ -108,6 +103,19 @@ public class Game : MonoBehaviour
 
         // Change to active
         gameState = GameState.Active;
+    }
+
+    private void RemoveBubbles()
+    {
+        // Remove all game objects
+        var root = gameObject;
+
+        var children = new List<GameObject>();
+        foreach (Transform child in transform) { children.Add(child.gameObject); }
+        children.ForEach(child =>
+        {
+            Destroy(child);
+        });
     }
 
     private void CreateBubblesInArea(GameObject root, Vector2 pos, int count)
@@ -188,33 +196,37 @@ public class Game : MonoBehaviour
 
         if (timePassed > 3)
         {
-            ShowAds();
-            gameState = GameState.Create;
+            gameState = GameState.Ads;
         }
     }
 
-    private void ShowAds()
+    private void UpdateAds(bool hasChanged)
     {
-        // Unity Ads
+        if (hasChanged)
+        {
+            var countBetweenAds = 1;//10;
 
-        // Show Unity Ads once
-        if (winCount == 3)// TESTING
-        {
-            if (Advertisement.isReady())
+            RemoveBubbles();
+
+            // Show Unity Ads once
+            if (winCount % (countBetweenAds * 2) == countBetweenAds)
             {
-                Debug.Log("Show Unity Ad");
-                Advertisement.Show();
+                AdRequestController.Instance.RequestGameVideo("Completed " + winCount + "th Puzzle", () =>
+                {
+                    gameState = GameState.Create;
+                });
             }
-        }
-        // Show Kiip Rewards whenever Kiip determines
-        else if (winCount > 10)
-        {
-            // Kiip Moment
-            if (winCount % 5 == 0)
+            // Show Kiip Rewards whenever Kiip determines
+            else if (winCount % (countBetweenAds * 2) == 0)
             {
-#if UNITY_ANDROID
-                Kiip.saveMoment("Completed " + winCount + "th Puzzle");
-#endif
+                AdRequestController.Instance.RequestReward("Completed " + winCount + "th Puzzle", () =>
+                {
+                    gameState = GameState.Create;
+                });
+            }
+            else
+            {
+                gameState = GameState.Create;
             }
         }
     }
@@ -226,6 +238,7 @@ public enum GameState
     Title,
     Create,
     Active,
-    Win
+    Win,
+    Ads
 
 }

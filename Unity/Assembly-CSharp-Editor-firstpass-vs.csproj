@@ -85,6 +85,9 @@
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
+ <Reference Include="OpenIAB_W8Plugin">
+ <HintPath>D:/UserData/Projects/Products/Games/Make10/Unity/Assets/Plugins/OpenIAB_W8Plugin.dll</HintPath>
+ </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">

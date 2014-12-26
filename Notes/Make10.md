@@ -227,6 +227,8 @@ Build math confidence while having fun.
 ## TODO
 
 
+- Add Remove ads button (In-App Purchase)
+
 - Add mic sound detection to blow bubbles
 
 - Adjust border to screen

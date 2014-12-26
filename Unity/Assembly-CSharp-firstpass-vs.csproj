@@ -51,6 +51,18 @@
      <Compile Include="Assets\Plugins\Kiip\Kiip.cs" />
      <Compile Include="Assets\Plugins\Kiip\testSupport\KiipEventListener.cs" />
      <Compile Include="Assets\Plugins\Kiip\testSupport\KiipGUIManager.cs" />
+     <Compile Include="Assets\Plugins\OpenIAB\Android\OpenIAB_Android.cs" />
+     <Compile Include="Assets\Plugins\OpenIAB\IOpenIAB.cs" />
+     <Compile Include="Assets\Plugins\OpenIAB\Inventory.cs" />
+     <Compile Include="Assets\Plugins\OpenIAB\JSON.cs" />
+     <Compile Include="Assets\Plugins\OpenIAB\OpenIAB.cs" />
+     <Compile Include="Assets\Plugins\OpenIAB\OpenIABEventManager.cs" />
+     <Compile Include="Assets\Plugins\OpenIAB\Options.cs" />
+     <Compile Include="Assets\Plugins\OpenIAB\OptionsVerifyMode.cs" />
+     <Compile Include="Assets\Plugins\OpenIAB\Purchase.cs" />
+     <Compile Include="Assets\Plugins\OpenIAB\SkuDetails.cs" />
+     <Compile Include="Assets\Plugins\OpenIAB\WP8\OpenIAB_WP8.cs" />
+     <Compile Include="Assets\Plugins\OpenIAB\iOS\OpenIAB_iOS.cs" />
      <Compile Include="Assets\Standard Assets\UnityAds\Scripts\Advertisement.cs" />
      <Compile Include="Assets\Standard Assets\UnityAds\Scripts\Advertisements\Adapter.cs" />
      <Compile Include="Assets\Standard Assets\UnityAds\Scripts\Advertisements\DeviceInfo\DeviceInfo.cs" />
@@ -105,6 +117,9 @@
      <None Include="Assets\Plugins\Android\unityads\AndroidManifest.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="OpenIAB_W8Plugin">
+ <HintPath>D:/UserData/Projects/Products/Games/Make10/Unity/Assets/Plugins/OpenIAB_W8Plugin.dll</HintPath>
  </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

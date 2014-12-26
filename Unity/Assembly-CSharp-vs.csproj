@@ -46,11 +46,13 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\AdRequestController.cs" />
      <Compile Include="Assets\BackgroundChanger.cs" />
      <Compile Include="Assets\BubbleAreaPhysics.cs" />
      <Compile Include="Assets\BubblePhysics.cs" />
      <Compile Include="Assets\BubbleText.cs" />
      <Compile Include="Assets\Game.cs" />
+     <Compile Include="Assets\OpenIAB-demo\OpenIABTest.cs" />
      <Compile Include="Assets\Screenshots2Showcase\Code\OverlayController.cs" />
      <Compile Include="Assets\Screenshots2Showcase\Code\OverlayManagerController.cs" />
      <None Include="Assets\Plugins\Android\AndroidManifest.xml" />
@@ -65,6 +67,9 @@
      <None Include="Assets\Plugins\Android\unityads\AndroidManifest.xml" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/4.6.0/UnityEngine.UI.dll</HintPath>
+ </Reference>
+ <Reference Include="OpenIAB_W8Plugin">
+ <HintPath>D:/UserData/Projects/Products/Games/Make10/Unity/Assets/Plugins/OpenIAB_W8Plugin.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

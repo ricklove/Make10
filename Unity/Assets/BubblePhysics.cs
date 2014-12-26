@@ -194,7 +194,7 @@ public class BubblePhysics : MonoBehaviour
             }
             else
             {
-                Debug.Log("Broken attachment to: " + lastAttachedInput.id);
+                //Debug.Log("Broken attachment to: " + lastAttachedInput.id);
                 attachedInputID = null;
             }
         }
@@ -224,7 +224,7 @@ public class BubblePhysics : MonoBehaviour
         // Pull towards attached input
         if (attachedInput != null)
         {
-            Debug.Log("Pull to: " + attachedInput.id);
+            //Debug.Log("Pull to: " + attachedInput.id);
 
             var diff = attachedInput.position - pos;
             var startSpringDistance = attachedInputStartSpringDistance;
