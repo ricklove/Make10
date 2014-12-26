@@ -160,15 +160,7 @@ public class Game : MonoBehaviour
             var loseArea = bubbleAreas.First(a => a != winArea);
 
             // Kiip Moment
-            if (winCount == 1)
-            {
-                Kiip.saveMoment("Completed 1st Puzzle");
-            }
-            else if (winCount == 3)
-            {
-                Kiip.saveMoment("Completed 3rd Puzzle");
-            }
-            else if (winCount % 5 == 0)
+            if (winCount % 5 == 0)
             {
                 Kiip.saveMoment("Completed " + winCount + "th Puzzle");
             }
